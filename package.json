@@ -1,0 +1,11 @@
+{
+  "name": "20-wirecutter-deals-alert",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "AshCo (https://ashco.io)",
+  "license": "MIT",
+  "dependencies": {
+    "dotenv": "^8.0.0",
+    "twitter": "^1.7.1"
+  }
+}
