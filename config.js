@@ -1,6 +1,6 @@
 ﻿const config = {
   username: 'WirecutterDeals',
-  keywords: ['ipad'],
+  keywords: ['ipad', 'usb-c', 'affinity'],
 };
 
 module.exports = { config };

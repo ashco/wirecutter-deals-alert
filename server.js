@@ -44,8 +44,8 @@ function handleScrape() {
 handleScrape();
 
 cron.schedule('*/5 * * * *', () => {
-  console.log(`[${new Date().toISOString()}] - Scraping Twitter account: @${config.username}`);
+  console.log(`[${new Date().toISOString()}] - Checking for deals`);
   handleScrape();
 });
 
-console.log('And now my watch has started.. 👀');
+console.log(`Starting watch for the greatest of deals 👀 [@${config.username}]`);
