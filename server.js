@@ -7,7 +7,6 @@ const { config } = require('./config');
 
 require('dotenv').config();
 
-
 const client = new Twitter({
   consumer_key: process.env.TWITTER_CONSUMER_KEY,
   consumer_secret: process.env.TWITTER_CONSUMER_SECRET,
@@ -23,7 +22,9 @@ function handleScrape() {
   client.get('statuses/user_timeline', params, (error, tweets, res) => {
     if (!error) {
       // filter only new tweets
-      const newTweets = tweets.filter(tweet => isAfter(new Date(tweet.created_at), latestScrapeDate));
+      const newTweets = tweets
+        .filter(tweet => isAfter(new Date(tweet.created_at), latestScrapeDate))
+        .filter(tweet => tweet.text[0] !== '@');
 
       // Check for keywords in each tweet, if present, send email;
       newTweets.forEach((tweet) => {
@@ -40,8 +41,11 @@ function handleScrape() {
   });
 }
 
+handleScrape();
 
-cron.schedule('0 */3 * * *', () => {
-  console.log(`[${new Date().toISOString()}] - Scraping Twitter account: ${config.username}`);
+cron.schedule('*/5 * * * *', () => {
+  console.log(`[${new Date().toISOString()}] - Scraping Twitter account: @${config.username}`);
   handleScrape();
 });
+
+console.log('And now my watch has started.. 👀');

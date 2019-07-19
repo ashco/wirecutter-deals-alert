@@ -1,6 +1,6 @@
 ﻿const config = {
   username: 'WirecutterDeals',
-  keywords: ['ipad', 'soundbar', 'charger', 'watch'],
+  keywords: ['ipad'],
 };
 
 module.exports = { config };
